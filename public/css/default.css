@@ -1,0 +1,169 @@
+.treeview-menu > li > a {
+    padding: 5px 5px 5px 15px;
+    display: block;
+    font-size: 14px;
+}
+
+#toolbar, #toolbar2, #toolbar3, #toolbar4, #toolbar5 {
+    display: block;
+    height: 50px;
+}
+
+.lefttoolbar {
+    float: left;
+    padding: 6px;
+    display: block;
+}
+
+.easyui-datagrid {
+    min-height: 400px;
+}
+
+.easyui-tree {
+    min-height: 34px;
+}
+
+.page-hidden {
+    display: none;
+}
+
+#JKDloading {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 2000;
+}
+
+#JKDloading > .overlay,
+.overlay-wrapper > .overlay,
+#JKDloading > .loading-img,
+.overlay-wrapper > .loading-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#JKDloading .overlay,
+.overlay-wrapper .overlay {
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+}
+
+#JKDloading .overlay > .fa,
+.overlay-wrapper .overlay > .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    color: #000;
+    font-size: 30px;
+}
+
+#JKDloading .overlay > .msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -30px;
+    margin-top: 30px;
+    color: #000;
+    font-size: 14px;
+}
+
+#JKDloading .overlay.dark,
+.overlay-wrapper .overlay.dark {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#JKDmsg {
+    padding: 20px;
+}
+
+.datagrid-row-selected a {
+    color: #fff;
+}
+
+
+.icon-excel:before {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    width: 1.28571429em;
+    text-align: center;
+
+    content: "\f1c3";
+}
+
+
+.datagrid-editable input[type=checkbox] {
+    zoom: 1.5;
+}
+
+
+.typeahead__container ul.typeahead__list {
+    padding: 0;
+}
+
+
+.pull-right {
+    float: right;
+}
+
+.card-center {
+    text-align: center;
+}
+
+.LiRemove {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    line-height: 15px;
+    text-align: center;
+    color: #FFF;
+    top: 5px;
+    left: 130px;
+}
+
+.lookPicSpan {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: none;
+}
+
+.spanLabel {
+    float: left;
+    width: 150px;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.hiddenBox {
+    display: none;
+}
+
+.ck-content {
+    min-height: 908px;
+    max-height: 908px;
+}
+
+.custom-file-input:lang(zh) ~ .custom-file-label::after {
+    content: "浏览";
+}
+
+.custom-file-label::after {
+    content: "浏览";
+}

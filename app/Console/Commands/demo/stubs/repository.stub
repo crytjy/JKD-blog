@@ -1,0 +1,153 @@
+<?php
+namespace DummyNamespace;
+
+use DummyModelPath;
+use Illuminate\Http\Request;
+
+class DummyClass
+{
+
+    protected $DummyModelName;
+
+    public function __construct(DummyModelClass $DummyModelName)
+    {
+        $this->DummyModelName = $DummyModelName;
+    }
+
+
+    /**
+     * 搜索
+     *
+     * @param Request $request
+     * @return mixed
+     */
+    public function pageQuery(Request $request)
+    {
+        if (!empty($request['sort'])) {
+            $order = $request['order'];
+            $sort = $request['sort'];
+
+            switch ($sort) {
+                case 'status':
+                    $sort = 'status';
+                    break;
+            }
+        } else {
+            $sort = 'id';
+            $order = 'desc';
+        }
+
+        //搜索条件
+        $data = $this->DummyModelName
+          ->where(function ($query) use ($request) {
+              $title = $request->get('title');
+              if (isset($title)) {
+                  $query->where('title', 'like', '%' . $title . '%')->get();
+              }
+          })
+          ->orderby($sort, $order)
+          ->paginate($request['rows']);
+
+        $returnData = json_decode(json_encode($data), true);
+        $returnData['footer'] = $returnData['total'];
+
+        return $returnData;
+    }
+
+
+    /**
+     * 详情
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function getDetail($id)
+    {
+        return $this->DummyModelName->find($id);
+    }
+
+
+    /**
+     * 新增
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        $res = $this->DummyModelName->create(array_only($data, $this->DummyModelName->fillable));
+        if ($res) {
+            return [
+                'msg' => '保存成功',
+                'code' => 200,
+                'id' => $res->id,
+                'type' => 'success'
+            ];
+        }
+
+        return [
+            'msg' => '保存失败',
+            'code' => 400,
+            'type' => 'warning'
+        ];
+    }
+
+
+    /**
+     * 更新
+     *
+     * @param $request
+     * @return array
+     */
+    public function update(Request $request)
+    {
+        if ($request->get('id')) {
+            $data = $request->all();
+            $res = $this->DummyModelName->find($data['id']);
+            $res->fill(array_only($data, $this->DummyModelName->fillable));
+            $res->save();
+            return [
+                'msg' => '更新成功',
+                'code' => 200,
+                'id' => $data['id'],
+                'type' => 'success'
+            ];
+        }
+
+        return [
+            'msg' => '参数有误',
+            'code' => 400,
+            'type' => 'warning'
+        ];
+    }
+
+
+    /**
+     * 删除
+     *
+     * @param int $id
+     * @return array
+     */
+    public function destroy(int $id)
+    {
+        if($id){
+            $res = $this->DummyModelName->where('id', $id)->delete();
+
+            if($res){
+                return [
+                    'msg' => '删除成功',
+                    'code' => 200,
+                    'type' => 'success'
+                ];
+            }
+        }
+
+        return [
+            'msg' => '没有权限',
+            'code' => 400,
+            'type' => 'warning'
+        ];
+    }
+
+}
