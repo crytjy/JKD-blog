@@ -137,7 +137,6 @@ class ArticleRepository
      */
     public function update(Request $request)
     {
-
         if ($request->get('id')) {
             $data = $request->all();
             $tagData = $data['tag_id'] ?? [];
