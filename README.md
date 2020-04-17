@@ -6,6 +6,7 @@
 - 七牛云
 - 百度搜索平台
 - 方糖推送
+- 金山词霸每日一句
 
 前期快速开发后台模板 http://localhost/jkd
 
@@ -13,7 +14,7 @@
 - php >= 7.2
 
 ###默认模板的生成
-    php artisan jkd --l=admin --m=cry
+    php artisan jkd --l=Admin --m=Cry
     // --l: 文件存放路径  --m: 模型名称
     
 ###配置config
